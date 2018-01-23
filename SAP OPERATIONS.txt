@@ -1,0 +1,113 @@
+*&---------------------------------------------------------------------*
+*& Report:  ZFIRSTCODE
+*& NAME  : ANSHUL GAIROLA
+*&---------------------------------------------------------------------*
+*&
+*&
+*&---------------------------------------------------------------------*
+
+REPORT  ZFIRSTCODE.
+
+TYPES: BEGIN OF student,
+       id(5) TYPE n,
+       name(10) TYPE c,
+       dob TYPE d,
+       END OF student.
+
+       CONSTANTS pi TYPE p Decimals 2 VALUE '3.14'.
+
+       Write :/'System variables'.
+       Write :/'Client side: ',sy-mandt.
+       Write :/'time: ',sy-uzeit.
+       Write :/'user name :', sy-uname.
+
+       Data : a Type i,
+             b type i,
+             c type i,
+             d type i.
+
+       a = 10.   "moving data
+       b = a.
+       move 20 to c.
+       move c to d.
+
+       write :/ a,b,c,d .
+
+       clear: a,b,c.
+
+       write :/'after clear :',a,b,c,d.
+
+       Data : num type i value 10. "if
+               if num > 5.
+               write :/'true'.
+               endif.
+
+
+       Data : num1 type i value 20.    "ifelse
+
+              if num1 > 5.
+                write: / 'num1 is greater '.
+
+              else.
+              write: / 'num2 is greater '.
+              endif.
+
+
+              data: m type i value 4.   "case
+              case m.
+                when 3.
+                  write :/ m,'equals', 3.
+                when 4.
+                  write :/ m,'equals', 4.
+                when others.
+                  write :/ 'invalid default'.
+                endcase.
+
+                Do 5 times.            "do
+                  write:/ sy-index.
+                  enddo.
+
+                  Data: al type i value 15.  "continue
+                  do 10 times.
+                    if al = 3.
+                      CONTINUE.
+                      endif.
+                      write: / al.
+                      enddo.
+
+                  DATA: s1(10) value 'hello',   "concat
+                        ab(10) value 'world',
+                        result(11).
+
+                        concatenate s1 ab into result separated by '-'.
+                        write:/ result.
+
+
+              Data: se(20),s2(20),s3(20),           "split
+             source(30) value 'abc def xyz'.
+
+             split source at ' ' into se s2 s3.
+             write:/ se.
+             write:/ s2.
+             write:/ s3.
+
+
+             DATA: x(30) value 'SAP ABAP DEV',          "search.
+                   str(30) value 'ABAP'.
+                   SEARCH x for str.
+                   if sy-subrc = 0.
+                     write:/'found'.
+                     else.
+                       write :/'not found '.
+                       endif.
+
+
+
+             DATA: xyz(30) value 'ABAP life',     "replace.
+                   string(10) value 'world'.
+                     Replace 'life' with string into xyz.
+                     write:/ xyz.
+
+
+
+                     PARAMETERS: p_matnr TYPE matnr.
